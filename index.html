@@ -14,7 +14,6 @@
 		</style>
 		<script>
 		    var totalMeetingCost = 0;
-			const socialCost = 0.3142;
 
 		    function showMeetingCost(meetingCostPerSecond){
 		        totalMeetingCost += meetingCostPerSecond;
@@ -24,6 +23,7 @@
 		    function calculateCost(){
 		        var meetingParticipants = parseInt(document.getElementById("meetingParticipants").value);
 		        var averageSalary = parseInt(document.getElementById("averageSalary").value);
+		        var socialCost = parseInt(document.getElementById("socialCost").value);
 		        averageSalary += averageSalary * socialCost;
 		        var averageSalaryPerSecond = averageSalary / 20 / 8 / 60 / 60;
 		        var meetingCostPerSecond = averageSalaryPerSecond * meetingParticipants;
@@ -38,6 +38,8 @@
             <p><input class="form-control" type="text" id="meetingParticipants"></p>
             <p>Enter the average monthly salary of the meeting participants (in Euro, before taxes)</p>
             <p><input class="form-control" type="text" id="averageSalary"> </p>
+            <p>Enter the social/state cost</p>
+            <p><input class="form-control" type="text" id="socialCost" value="0.3142"> </p>
             <p><input class="btn btn-primary" type="submit" value="Start meeting" onClick="calculateCost()">
             <input class="btn btn-danger" type="submit" value="Reset" onClick="location.reload()"></p>
             <div id="meetingCost"></div>
