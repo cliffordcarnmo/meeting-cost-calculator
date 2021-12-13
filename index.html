@@ -103,6 +103,24 @@
 				meetingParticipantArray.forEach(addRoleCostPerSecond)
 				setInterval(showMeetingCost, 1000, totalMeetingCostPerSecond);
 			}
+
+			function itterateTable() {
+				meetingParticipantArray = [];
+				var table = document.getElementById("roleTable");
+				var rows = table.getElementsByClassName("role");
+				for (var i = 0; i < rows.length; i++) {
+					var roleCount = rows[i].getElementsByClassName('roleCount')[0].innerHTML;
+					var roleName = rows[i].getElementsByClassName('roleName')[0].innerHTML;
+					var roleCost = rows[i].getElementsByClassName('roleWage')[0].innerHTML;
+					var socialCost = parseInt(document.getElementById("socialCost").value);
+
+					for (var j = 0; j < roleCount; j++) {
+						meetingParticipantArray.push(new Role(roleName, roleCost, socialCost));
+					}
+
+				}
+			}
+			
 		</script>
 	</head>
 	<body>
