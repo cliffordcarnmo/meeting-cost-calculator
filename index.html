@@ -15,6 +15,13 @@
 		<script>
 		    var totalMeetingCost = 0;
 
+			var meetingParticipantArray = [];
+
+			var Role = function(name, yearlyWage) {
+				this.name = name;
+				this.costPerSecond = yearlyWage / 12 / 20 / 8 / 60 / 60;
+			};
+
 		    function showMeetingCost(meetingCostPerSecond){
 		        totalMeetingCost += meetingCostPerSecond;
 		        document.getElementById("meetingCost").innerHTML = "€" + totalMeetingCost.toFixed(2);
@@ -29,6 +36,8 @@
 		        var meetingCostPerSecond = averageSalaryPerSecond * meetingParticipants;
 		        setInterval(showMeetingCost, 1000, meetingCostPerSecond);
 		    }
+
+
 		</script>
     </head>
 	<body>
