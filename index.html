@@ -84,20 +84,20 @@
 				totalMeetingCostPerSecond += (role.yearlyWage / 12 / 20 / 8 / 60 / 60);
 			}
 
-		    function showMeetingCost(meetingCostPerSecond){
-		        totalMeetingCost += meetingCostPerSecond;
-		        document.getElementById("meetingCost").innerHTML = "€" + totalMeetingCost.toFixed(2);
+			function showMeetingCost(meetingCostPerSecond){
+				totalMeetingCost += meetingCostPerSecond;
+				document.getElementById("meetingCost").innerHTML = "€" + totalMeetingCost.toFixed(2);
 			}
 
-		    function calculateCost(){
-		        var meetingParticipants = parseInt(document.getElementById("meetingParticipants").value);
-		        var averageSalary = parseInt(document.getElementById("averageSalary").value);
-		        var socialCost = parseInt(document.getElementById("socialCost").value);
-		        averageSalary += averageSalary * socialCost;
-		        var averageSalaryPerSecond = averageSalary / 20 / 8 / 60 / 60;
-		        var meetingCostPerSecond = averageSalaryPerSecond * meetingParticipants;
-		        setInterval(showMeetingCost, 1000, meetingCostPerSecond);
-		    }
+			function calculateCost(){
+				var meetingParticipants = parseInt(document.getElementById("meetingParticipants").value);
+				var averageSalary = parseInt(document.getElementById("averageSalary").value);
+				var socialCost = parseInt(document.getElementById("socialCost").value);
+				averageSalary += averageSalary * socialCost;
+				var averageSalaryPerSecond = averageSalary / 20 / 8 / 60 / 60;
+				var meetingCostPerSecond = averageSalaryPerSecond * meetingParticipants;
+				setInterval(showMeetingCost, 1000, meetingCostPerSecond);
+			}
 
 			function calculateCostPerSecond() {
 				meetingParticipantArray.forEach(addRoleCostPerSecond)
