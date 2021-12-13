@@ -14,13 +14,19 @@
 		</style>
 		<script>
 		    var totalMeetingCost = 0;
-
+			var totalMeetingCostPerSecond = 0;
 			var meetingParticipantArray = [];
 
+			// TODO can socialCost be calculated somehow in this object?
 			var Role = function(name, yearlyWage) {
 				this.name = name;
-				this.costPerSecond = yearlyWage / 12 / 20 / 8 / 60 / 60;
+				this.yearlyWage = yearlyWage;
 			};
+
+			function addRoleCostPerSecond(role)
+			{
+				totalMeetingCostPerSecond += (role.yearlyWage / 12 / 20 / 8 / 60 / 60);
+			}
 
 		    function showMeetingCost(meetingCostPerSecond){
 		        totalMeetingCost += meetingCostPerSecond;
@@ -36,6 +42,11 @@
 		        var meetingCostPerSecond = averageSalaryPerSecond * meetingParticipants;
 		        setInterval(showMeetingCost, 1000, meetingCostPerSecond);
 		    }
+
+			function calculateCostPerSecond() {
+				meetingParticipantArray.forEach(addRoleCostPerSecond)
+				setInterval(showMeetingCost, 1000, totalMeetingCostPerSecond);
+			}
 
 
 		</script>
