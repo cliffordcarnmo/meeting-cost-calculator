@@ -14,8 +14,9 @@
 		</style>
 		<script>
 		    class Meeting{
-				constructor(participants){
-					this.participants = participants;
+				constructor(){
+					this.participants = [];
+					this.startTime = new Date();
 				}
 
 				addParticipants(role){
@@ -24,6 +25,16 @@
 				
 				getParticipants(){
 					return this.participants;
+				}
+				
+				getStartTime(){
+					return this.startTime;
+				}
+
+				getElapsedTime(){
+					let diff = new Date() - this.startTime;
+					diff /= 1000;
+					return Math.round(diff);
 				}
 			}
 
