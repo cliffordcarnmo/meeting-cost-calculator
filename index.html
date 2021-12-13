@@ -13,15 +13,55 @@
             }
 		</style>
 		<script>
-		    var totalMeetingCost = 0;
+		    class Meeting{
+				constructor(participants){
+					this.participants = participants;
+				}
+
+				addParticipants(role){
+					this.participants.push(role);
+				}
+				
+				getParticipants(){
+					return this.participants;
+				}
+			}
+
+			class Role{
+				constructor(name, yearlyWage, socialCost){
+					this.name = name;
+					this.yearlyWage = yearlyWage;
+					this.socialCost = socialCost;
+				}
+
+				getName(){
+					return this.name;
+				}
+
+				getYearlyWave(){
+					return this.yearlyWage;
+				}
+
+				getSalaryPerSecond(){
+					return this.yearlyWage / 12 / 20 / 8 / 60 / 60;
+				}
+
+				getSocialCost(){
+					return this.socialCost;
+				}
+			}
+
+			var totalMeetingCost = 0;
 			var totalMeetingCostPerSecond = 0;
 			var meetingParticipantArray = [];
 
 			// TODO can socialCost be calculated somehow in this object?
+			/*
 			var Role = function(name, yearlyWage) {
 				this.name = name;
 				this.yearlyWage = yearlyWage;
 			};
+			*/
 
 			function addRoleCostPerSecond(role)
 			{
