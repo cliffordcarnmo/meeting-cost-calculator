@@ -16,17 +16,20 @@
 		    class Meeting{
 				constructor(){
 					this.participants = [];
+				}
+
+				startMeeting(){
 					this.startTime = new Date();
 				}
 
 				addParticipants(role){
 					this.participants.push(role);
 				}
-				
+
 				getParticipants(){
 					return this.participants;
 				}
-				
+
 				getStartTime(){
 					return this.startTime;
 				}
@@ -66,6 +69,8 @@
 			var totalMeetingCostPerSecond = 0;
 			var meetingParticipantArray = [];
 
+			let m = new Meeting();
+
 			// TODO can socialCost be calculated somehow in this object?
 			/*
 			var Role = function(name, yearlyWage) {
@@ -82,7 +87,7 @@
 		    function showMeetingCost(meetingCostPerSecond){
 		        totalMeetingCost += meetingCostPerSecond;
 		        document.getElementById("meetingCost").innerHTML = "€" + totalMeetingCost.toFixed(2);
-		    }
+			}
 
 		    function calculateCost(){
 		        var meetingParticipants = parseInt(document.getElementById("meetingParticipants").value);
