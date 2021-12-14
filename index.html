@@ -26,6 +26,10 @@
 					this.participants.push(role);
 				}
 
+				clearParticipants(){
+					this.participants = [];
+				}
+
 				getParticipants(){
 					return this.participants;
 				}
@@ -112,7 +116,7 @@
 			}
 
 			function itterateTable() {
-				m.participants = [];
+				m.clearParticipants();
 				var table = document.getElementById("roleTable");
 				var rows = table.getElementsByClassName("role");
 				for (var i = 0; i < rows.length; i++) {
