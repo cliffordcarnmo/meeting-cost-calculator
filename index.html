@@ -5,13 +5,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Meeting cost calculator</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">		
-		<style type="text/css">
-			#meetingCost{
-				color: #ff0000;
-				font-weight: bold;
-				font-size: 10em;
-			}
-		</style>
 		<script>
 			class Meeting{
 				constructor(){
@@ -105,25 +98,48 @@
 					for (var j = 0; j < roleCount; j++) {
 						m.addParticipants(new Role(roleName, roleCost, socialCost));
 					}
-
 				}
 			}
 			
 		</script>
 	</head>
 	<body>
-		<div class="container pt-3">
-			<h1 class="display-1">Meeting Cost Calculator</h1>
-			<div id="meetingCost"></div>
-			<!--<p>Enter the number of meeting participants</p>
-			<p><input class="form-control" type="text" id="meetingParticipants"></p>
-			<p>Enter the average monthly salary of the meeting participants (in Euro, before taxes)</p>
-			<p><input class="form-control" type="text" id="averageSalary"> </p>-->
-			<p>Enter the social/state cost of employment</p>
-			<p><input class="form-control" type="text" id="socialCost" value="0.3142"> </p>
+		<div class="container p-3">
+			<div class="row">
+				<div class="col">
+					<h1 class="display-1">Meeting Cost Calculator</h1>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col">
+					<div id="meetingCost" class="text-danger display-1"></div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-4">
+					<label for="socialCost" class="form-label">Average Yearly Wage in EUR</label>
+					<input class="form-control" type="text" id="roleWage" value="85229" onkeyup="javascript:itterateTable();">
+				</div>
+				<div class="col-4">
+					<label for="socialCost" class="form-label">Enter the social/state cost of employment</label>
+					<input class="form-control" type="text" id="socialCost" value="0.3142">
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-4">
+					<label for="roleName" class="form-label">Participant role</label>
+					<input class="form-control" type="text" id="roleName" value="Average IT worker" onkeyup="javascript:itterateTable();">
+				</div>
+				<div class="col-4">
+					<label for="socialCost" class="form-label">Number of participants in this meeting</label>
+					<input class="form-control" type="text" id="roleCount" value="0" onkeyup="javascript:itterateTable();">
+				</div>
+			</div>
 
-			
-			
+			<!--
 			<table class="table" id ="roleTable">
 				<tr>
 				  <th>Name</th>
@@ -135,7 +151,7 @@
 					<td contenteditable="true" class="roleWage" onkeyup="javascript:itterateTable();">85229</td>
 					<td contenteditable="true" class="roleCount" onkeyup="javascript:itterateTable();">0</td>
 				</tr>
-				<!--<tr class="role">
+				<tr class="role">
 					<td contenteditable="true" class="roleName" onkeyup="javascript:itterateTable();">Software Engineer</td>
 					<td contenteditable="true" class="roleWage" onkeyup="javascript:itterateTable();">85229</td>
 					<td contenteditable="true" class="roleCount" onkeyup="javascript:itterateTable();">0</td>
@@ -164,10 +180,15 @@
 					<td contenteditable="true" class="roleName" onkeyup="javascript:itterateTable();">Director of Engineering</td>
 					<td contenteditable="true" class="roleWage" onkeyup="javascript:itterateTable();">133349</td>
 					<td contenteditable="true" class="roleCount" onkeyup="javascript:itterateTable();">0</td>
-				</tr>-->
+				</tr>
 			  </table>
-			  <p><input class="btn btn-primary" type="submit" value="Start meeting" onClick="startTicker()">
-			  <input class="btn btn-danger" type="submit" value="Reset" onClick="location.reload()"></p>
+			-->
+			<div class="row">
+				<div class="col pt-3">
+					<input class="btn btn-primary" type="submit" value="Start meeting" onClick="startTicker()">
+					<input class="btn btn-danger" type="submit" value="Reset" onClick="location.reload()"></p>
+				</div>
+			</div>
 		</div>
-		</body>
+	</body>
 </html>
