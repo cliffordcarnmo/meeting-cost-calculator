@@ -47,6 +47,7 @@
 				getMeetingCostPerSecond() {
 					for (let i = 0; i < this.participants.length; i++) {
 						this.meetingCost += this.participants[i].getSalaryPerSecond();
+						this.meetingCost += this.meetingCost * this.participants[i].getSocialCost();
 					}
 					return this.meetingCost;
 				}
@@ -68,11 +69,11 @@
 				}
 
 				getSalaryPerSecond(){
-				const workableDaysInMonth = 21;
-				const workableHoursInDay = 8;
-				const minutesInHour = 60;
-				const secondsInMinute = 60;
-					return this.averageWave / workableDaysInMonth / workableHoursInDay / minutesInHour / secondsInMinute;
+					const workableDaysInMonth = 21;
+					const workableHoursInDay = 8;
+					const minutesInHour = 60;
+					const secondsInMinute = 60;
+					return this.averageWage / workableDaysInMonth / workableHoursInDay / minutesInHour / secondsInMinute;
 				}
 
 				getSocialCost(){
@@ -111,7 +112,7 @@
 			<div class="row">
 				<div class="col-4">
 					<label for="socialCost" class="form-label">Average monthly wage in EUR</label>
-					<input class="form-control" type="text" id="roleWage" value="57456">
+					<input class="form-control" type="text" id="roleWage" value="5000">
 				</div>
 				<div class="col-4">
 					<label for="socialCost" class="form-label">Enter the social/state cost of employment</label>
