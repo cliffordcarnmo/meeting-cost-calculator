@@ -82,7 +82,7 @@
 			}
 
 			function showMeetingCost(){
-				document.getElementById("meetingCost").innerHTML = "€" + m.getElapsedCost().toFixed(2);
+				document.getElementById("meetingCost").innerHTML = "<p>Elapsed time: <strong>" + new Date(m.getElapsedTime() * 1000).toISOString().substr(11, 8) + "</strong></p><p>Estimated cost: <strong>€" + m.getElapsedCost().toFixed(2) + "</strong></p>";
 			}
 
 			function itterateTable() {
@@ -113,7 +113,7 @@
 			
 			<div class="row">
 				<div class="col">
-					<div id="meetingCost" class="text-danger display-1"></div>
+					<div id="meetingCost" class="text-danger display-3"></div>
 				</div>
 			</div>
 			
