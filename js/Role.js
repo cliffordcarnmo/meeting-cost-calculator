@@ -5,6 +5,10 @@ class Role{
 	this.socialCost = socialCost;
     }
 
+    getKey() {
+	return this.name + ':' + this.averageWage;
+    }
+
     getName() {
 	return this.name;
     }
