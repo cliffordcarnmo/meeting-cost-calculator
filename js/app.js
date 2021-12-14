@@ -20,7 +20,9 @@ const updateRoleList = () => {
 
 window.onload = () => {
     $("addRoleButton").onclick = () => {
-	let participant = new Role($("roleName").value, parseInt($("roleWage").value), parseInt($("averageSocialCost").value));
+	let participant = new Role($("roleName").value,
+				   parseInt($("roleWage").value),
+				   parseInt($("socialCost").value));
 	let participants = parseInt($("roleCount").value);
 
 	for(let i = 0; i < participants; i++){
@@ -32,6 +34,5 @@ window.onload = () => {
 };
 
 function startTicker() {
-    
     m.startMeeting();
 }
