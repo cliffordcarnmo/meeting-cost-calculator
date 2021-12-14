@@ -71,7 +71,11 @@
 				}
 
 				getSalaryPerSecond(){
-					return this.averageWave = 21 / 8 / 60 / 60;
+				const workableDaysInMonth = 21;
+				const workableHoursInDay = 8;
+				const minutesInHour = 60;
+				const secondsInMinute = 60;
+					return this.averageWave = workableDaysInMonth / workableHoursInDay / minutesInHour / secondsInMinute;
 				}
 
 				getSocialCost(){
