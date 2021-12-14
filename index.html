@@ -67,7 +67,6 @@
 
 			var totalMeetingCost = 0;
 			var totalMeetingCostPerSecond = 0;
-			var meetingParticipantArray = [];
 
 			let m = new Meeting();
 
@@ -100,7 +99,7 @@
 			}
 
 			function calculateCostPerSecond() {
-				meetingParticipantArray.forEach(addRoleCostPerSecond)
+				m.participants.forEach(addRoleCostPerSecond)
 			}
 
 			function startTicker() {
@@ -109,7 +108,7 @@
 			}
 
 			function itterateTable() {
-				meetingParticipantArray = [];
+				m.participants = [];
 				var table = document.getElementById("roleTable");
 				var rows = table.getElementsByClassName("role");
 				for (var i = 0; i < rows.length; i++) {
@@ -119,7 +118,7 @@
 					var socialCost = parseInt(document.getElementById("socialCost").value);
 
 					for (var j = 0; j < roleCount; j++) {
-						meetingParticipantArray.push(new Role(roleName, roleCost, socialCost));
+						m.addParticipants(new Role(roleName, roleCost, socialCost));
 					}
 
 				}
