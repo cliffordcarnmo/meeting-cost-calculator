@@ -20,7 +20,7 @@ class Meeting {
 	    const param = btoa((JSON.stringify(this.toJSON(), null, 2)));
 	    document.getElementById("reportDiv").style.display = 'block';
 	    document.getElementById("reportLink").href = 'report.html?p='+param;
-	    console.log(param);
+	    //console.log(param);
 	}
     }
 
@@ -44,6 +44,7 @@ class Meeting {
 	json.participants.forEach(p => m.addParticipant(p));
 	m.startTime = json.startTime;
 	m.endTime = json.endTime;
+	m.started = n.endTime !== 0;
 	return m;
     }
 
