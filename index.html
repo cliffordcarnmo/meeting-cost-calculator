@@ -126,15 +126,16 @@
 	<body>
 		<div class="container pt-3">
 			<h1 class="display-1">Meeting Cost Calculator</h1>
-			<p>Enter the number of meeting participants</p>
+			<div id="meetingCost"></div>
+			<!--<p>Enter the number of meeting participants</p>
 			<p><input class="form-control" type="text" id="meetingParticipants"></p>
 			<p>Enter the average monthly salary of the meeting participants (in Euro, before taxes)</p>
-			<p><input class="form-control" type="text" id="averageSalary"> </p>
+			<p><input class="form-control" type="text" id="averageSalary"> </p>-->
 			<p>Enter the social/state cost of employment</p>
 			<p><input class="form-control" type="text" id="socialCost" value="0.3142"> </p>
-			<p><input class="btn btn-primary" type="submit" value="Start meeting" onClick="calculateCostPerSecond()">
-			<input class="btn btn-danger" type="submit" value="Reset" onClick="location.reload()"></p>
-			<div id="meetingCost"></div>
+
+			
+			
 			<table class="table" id ="roleTable">
 				<tr>
 				  <th>Name</th>
@@ -177,6 +178,8 @@
 					<td contenteditable="true" class="roleCount" onkeyup="javascript:itterateTable();">0</td>
 				</tr>-->
 			  </table>
+			  <p><input class="btn btn-primary" type="submit" value="Start meeting" onClick="calculateCostPerSecond()">
+			  <input class="btn btn-danger" type="submit" value="Reset" onClick="location.reload()"></p>
 		</div>
 		</body>
 </html>
