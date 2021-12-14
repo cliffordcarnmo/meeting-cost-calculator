@@ -1,8 +1,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Meeting cost calculator</title>
+    <title>Meeting cost report</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="js/Meeting.js"> </script>
+    <script src="js/Role.js"> </script>
+    <script src="js/report.js"> </script>
 </head>
 <body>
     <div class="container p-3">
@@ -15,7 +18,7 @@
                             Time spent in meeting:
                         </div>
                         <div class="col-2">
-                            <output>0</output>
+                            <output id="time">0</output>
                         </div>
                     </div>
                     <div class="row pb-2">
@@ -23,7 +26,7 @@
                             Number of Participants:
                         </div>
                         <div class="col-2">
-                            <output>0</output>
+                            <output id="participants">0</output>
                         </div>
                     </div>
                 </div>
@@ -34,7 +37,7 @@
                             Cost per second:
                         </div>
                         <div class="col-2">
-                            <output>0</output>
+                            <output id="costPerSec">0</output>
                         </div>
                     </div>
                     <div class="row pb-2">
@@ -53,4 +56,7 @@
 
         </div>
     </div>
+    <script>
+        
+    </script>
 </body>
