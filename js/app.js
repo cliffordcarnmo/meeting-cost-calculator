@@ -34,7 +34,7 @@ window.onload = () => {
     $("addRoleButton").onclick = () => {
 	let participant = new Role($("roleName").value,
 				   parseInt($("roleWage").value),
-				   parseInt($("socialCost").value));
+				   parseFloat($("socialCost").value));
 	let participants = parseInt($("roleCount").value);
 	if(participant.getName().trim() === "" ||
 	   participant.getMonthlyWage() <= 0 ||
@@ -44,7 +44,7 @@ window.onload = () => {
 	}
 
 	for(let i = 0; i < participants; i++){
-	    m.addParticipants(participant);
+	    m.addParticipant(participant);
 	}
 
 	updateRoleList();

@@ -2,6 +2,7 @@ class Meeting {
 
     constructor() {
 	this.startTime = 0;
+	this.endTime = 0;
 	this.meetingCost = 0;
 	this.participants = [];
 	this.started = false;
@@ -15,24 +16,54 @@ class Meeting {
 	if(this.started) {
 	    clearInterval(this.started);
 	    this.started = false;
+	    this.endTime = new Date();
+	    const param = btoa((JSON.stringify(this.toJSON(), null, 2)));
+	    document.getElementById("reportDiv").style.display = 'block';
+	    document.getElementById("reportLink").href = 'report.html?p='+param;
+	    console.log(param);
 	}
     }
 
     startMeeting() {
 	this.startTime = new Date();
-	this.started = setInterval(this.showMeetingCost, 1000);
-	this.showMeetingCost();
+	document.getElementById("reportDiv").style.display = 'none';
+	this.started = setInterval(this._tickMeeting.bind(this), 1000);
+	this._tickMeeting();
     }
 
-    showMeetingCost() {
-	const data = {time: new Date(m.getElapsedTime() * 1000).toISOString().substr(11, 8),
-		      cost: m.getMeetingCost().toFixed(2)};
-	document.getElementById("meetingCost").innerHTML =
-	    "<p>Elapsed time: <strong>" + data.time + "</strong></p>" +
-	    "<p>Estimated cost: <strong>€" + data.cost + "</strong></p>";
+    _tickMeeting() {
+	document.getElementById("meetingCost").innerHTML = this.getMeetingCostHTML(this.getMeetingSummary());
     }
 
-    addParticipants(role) {
+    toJSON() {
+	return this.getMeetingSummary(true);
+    }
+
+    fromJSON(json) {
+	const m = new Meeting();
+	json.participants.forEach(p => m.addParticipant(p));
+	m.startTime = json.startTime;
+	m.endTime = json.endTime;
+	return m;
+    }
+
+    getMeetingSummary(full=false) {
+	return {startTime: this.startTime,
+		endTime: this.endTime,
+		participants: full ? this.getParticipants() : null,
+		time: new Date(this.getElapsedTime() * 1000).toISOString().substr(11, 8),
+		cost: this.getMeetingCost().toFixed(2)};
+    }
+
+    getMeetingCostHTML(data) {
+	const template = document.getElementById("meetingCostTemplate").innerHTML;
+	return template.replace(/{(.+?)}/g, (match) => {
+	    const k = match.substr(1, match.length-2);
+	    return data[k];
+	});
+    }
+
+    addParticipant(role) {
 	this.participants.push(role);
     }
 

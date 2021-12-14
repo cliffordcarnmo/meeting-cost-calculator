@@ -1,92 +1,101 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Meeting cost calculator</title>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-		<script src="js/Meeting.js"> </script>
-		<script src="js/Role.js"> </script>
-		<script src="js/app.js"> </script>
-	</head>
-	<body>
-		<div class="container p-3">
-			<div class="row">
-				<div class="col">
-					<h1 class="display-1">Meeting Cost Calculator</h1>
-				</div>
-			</div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Meeting cost calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="js/Meeting.js"> </script>
+    <script src="js/Role.js"> </script>
+    <script src="js/app.js"> </script>
+  </head>
+  <body>
+    <div class="container p-3">
+      <div class="row">
+	<div class="col">
+	  <h1 class="display-1">Meeting Cost Calculator</h1>
+	</div>
+      </div>
 
-			<div class="row">
-				<div class="col">
-					<div id="meetingCost" class="text-danger display-3"></div>
-				</div>
-			</div>
+      <div class="row">
+	<div class="col">
+	  <div id="meetingCost" class="text-danger display-3"></div>
+	</div>
+      </div>
 
-			<div class="row pb-3">
-				<div class="col-3">
-					<label for="roleName" class="form-label">Participant role</label>
-				</div>
-				<div class="col-3">
-					<label for="socialCost" class="form-label">Average monthly wage in EUR</label>
-				</div>
-				<div class="col-3">
-					<label for="socialCost" class="form-label">Social cost of employment (%)</label>
-				</div>
-				<div class="col-2">
-					<label for="socialCost" class="form-label">Count</label>
-				</div>
-			</div>
+      <div class="row pb-3">
+	<div class="col-3">
+	  <label for="roleName" class="form-label">Participant role</label>
+	</div>
+	<div class="col-3">
+	  <label for="socialCost" class="form-label">Average monthly wage in EUR</label>
+	</div>
+	<div class="col-3">
+	  <label for="socialCost" class="form-label">Social cost of employment (%)</label>
+	</div>
+	<div class="col-2">
+	  <label for="socialCost" class="form-label">Count</label>
+	</div>
+      </div>
 
-			<div id="roleList">
-			</div>
+      <div id="roleList">
+      </div>
 
-			<div class="row pb-3">
-				<div class="col-3">
-					<input class="form-control" type="text" id="roleName" value="Average IT worker"/>
-				</div>
-				<div class="col-3">
-					<input class="form-control" type="text" id="roleWage" value="5000"/>
-				</div>
-				<div class="col-3">
-					<input class="form-control" type="text" id="socialCost" value="31.42"/>
-				</div>
-				<div class="col-1">
-				  <input class="form-control" type="text" id="roleCount" value="5"/>
-				</div>
-				<div class="col-2" style="align: middle">
-  				  <button class="btn-sm btn-success" id="addRoleButton">Add Role</button>
-				</div>
-			</div>
+      <div class="row pb-3">
+	<div class="col-3">
+	  <input class="form-control" type="text" id="roleName" value="Average IT worker"/>
+	</div>
+	<div class="col-3">
+	  <input class="form-control" type="text" id="roleWage" value="5000"/>
+	</div>
+	<div class="col-3">
+	  <input class="form-control" type="text" id="socialCost" value="31.42"/>
+	</div>
+	<div class="col-1">
+	  <input class="form-control" type="text" id="roleCount" value="5"/>
+	</div>
+	<div class="col-2" style="align: middle">
+  	  <button class="btn-sm btn-success" id="addRoleButton">Add Role</button>
+	</div>
+      </div>
 
-			<div class="row">
-				<div class="col">
-					<input class="btn btn-primary" type="submit" id="startMeeting" value="Start meeting"/>
-					<input class="btn btn-danger" type="submit" value="Reset" onClick="location.reload()"/>
-				</div>
-			</div>
-		</div>
-
-<div id="roleTemplate" style="display:none">
-  <div class="row pb-3">
-    <div class="col-3">
-      <span>{name}</span>
-    </div>
-    <div class="col-3">
-      <span>{averageWage}</span>
-    </div>
-    <div class="col-3">
-      <span>{socialCost}</span>
-    </div>
-    <div class="col-1">
-      <span>{count}</span>
-    </div>
-    <div class="col-2" style="align: middle">
-
+      <div class="row">
+	<div class="col">
+	  <input class="btn btn-primary" type="submit" id="startMeeting" value="Start meeting"/>
+	  <input class="btn btn-danger" type="submit" value="Reset" onClick="location.reload()"/>
+	</div>
+      </div>
+      <div class="row" id="reportDiv" style="display:none">
+	<div class="col">
+	  <button class="btn btn-success"><a id="reportLink" href="report.html?p=">Report Page</a></button>
+	</div>
+      </div>
     </div>
 
-  </div>
-</div>
+    <div id="meetingCostTemplate" style="display:none">
+      <p>Elapsed time: <strong>{time}</strong></p>
+      <p>Estimated cost: <strong>€{cost}</strong></p>
+    </div>
+    <div id="roleTemplate" style="display:none">
+      <div class="row pb-3">
+	<div class="col-3">
+	  <span>{name}</span>
+	</div>
+	<div class="col-3">
+	  <span>{averageWage}</span>
+	</div>
+	<div class="col-3">
+	  <span>{socialCost}</span>
+	</div>
+	<div class="col-1">
+	  <span>{count}</span>
+	</div>
+	<div class="col-2" style="align: middle">
 
-</body>
+	</div>
+
+      </div>
+    </div>
+
+  </body>
 </html>
