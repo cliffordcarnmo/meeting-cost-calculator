@@ -39,6 +39,14 @@
 					diff /= 1000;
 					return Math.round(diff);
 				}
+
+				getMeetingCostPerSecond() {
+					var cost = 0;
+					for (var i = 0; i < this.participants.length; i++) {
+						cost += this.participants[i].getSalaryPerSecond();
+					}
+					return cost;
+				}
 			}
 
 			class Role{
@@ -98,13 +106,9 @@
 				setInterval(showMeetingCost, 1000, meetingCostPerSecond);
 			}
 
-			function calculateCostPerSecond() {
-				m.participants.forEach(addRoleCostPerSecond)
-			}
 
 			function startTicker() {
-				calculateCostPerSecond();
-				setInterval(showMeetingCost, 1000, totalMeetingCostPerSecond);
+				setInterval(showMeetingCost, 1000, m.getMeetingCostPerSecond());
 			}
 
 			function itterateTable() {
