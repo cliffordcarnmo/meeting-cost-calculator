@@ -81,7 +81,6 @@
 				}
 			}
 
-			var totalMeetingCost = 0;
 			let m = new Meeting();
 
 			function startTicker() {
@@ -90,8 +89,7 @@
 			}
 
 			function showMeetingCost(){
-				totalMeetingCost = m.getElapsedCost();
-				document.getElementById("meetingCost").innerHTML = "€" + totalMeetingCost.toFixed(2);
+				document.getElementById("meetingCost").innerHTML = "€" + m.getElapsedCost().toFixed(2);
 			}
 
 			function itterateTable() {
