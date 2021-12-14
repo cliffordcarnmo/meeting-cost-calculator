@@ -101,6 +101,10 @@
 
 			function calculateCostPerSecond() {
 				meetingParticipantArray.forEach(addRoleCostPerSecond)
+			}
+
+			function startTicker() {
+				calculateCostPerSecond();
 				setInterval(showMeetingCost, 1000, totalMeetingCostPerSecond);
 			}
 
@@ -178,7 +182,7 @@
 					<td contenteditable="true" class="roleCount" onkeyup="javascript:itterateTable();">0</td>
 				</tr>-->
 			  </table>
-			  <p><input class="btn btn-primary" type="submit" value="Start meeting" onClick="calculateCostPerSecond()">
+			  <p><input class="btn btn-primary" type="submit" value="Start meeting" onClick="startTicker()">
 			  <input class="btn btn-danger" type="submit" value="Reset" onClick="location.reload()"></p>
 		</div>
 		</body>
