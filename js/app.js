@@ -2,6 +2,16 @@ let m = new Meeting();
 
 const $ = x => document.getElementById(x);
 
+const startTicker = () => {
+    if(m.isStarted()) {
+	$("startMeeting").value="Start meeting";
+	m.endMeeting();
+    } else {
+	$("startMeeting").value="End meeting";
+	m.startMeeting();
+    }
+}
+
 const updateRoleList = () => {
     const template = $("roleTemplate").innerHTML;
     const unique = {};
@@ -19,11 +29,19 @@ const updateRoleList = () => {
 };
 
 window.onload = () => {
+    $("startMeeting").onclick = startTicker;
+
     $("addRoleButton").onclick = () => {
 	let participant = new Role($("roleName").value,
 				   parseInt($("roleWage").value),
 				   parseInt($("socialCost").value));
 	let participants = parseInt($("roleCount").value);
+	if(participant.getName().trim() === "" ||
+	   participant.getMonthlyWage() <= 0 ||
+	   participant.getSocialCost() <= 0) {
+	    alert('You must specify all fields');
+	    return;
+	}
 
 	for(let i = 0; i < participants; i++){
 	    m.addParticipants(participant);
@@ -32,7 +50,3 @@ window.onload = () => {
 	updateRoleList();
     };
 };
-
-function startTicker() {
-    m.startMeeting();
-}

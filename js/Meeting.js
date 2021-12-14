@@ -1,19 +1,35 @@
 class Meeting {
+
     constructor() {
 	this.startTime = 0;
 	this.meetingCost = 0;
 	this.participants = [];
+	this.started = false;
+    }
+
+    isStarted() {
+	return this.started !== false;
+    }
+
+    endMeeting() {
+	if(this.started) {
+	    clearInterval(this.started);
+	    this.started = false;
+	}
     }
 
     startMeeting() {
 	this.startTime = new Date();
-	setInterval(this.showMeetingCost, 1000);
+	this.started = setInterval(this.showMeetingCost, 1000);
+	this.showMeetingCost();
     }
 
     showMeetingCost() {
+	const data = {time: new Date(m.getElapsedTime() * 1000).toISOString().substr(11, 8),
+		      cost: m.getMeetingCost().toFixed(2)};
 	document.getElementById("meetingCost").innerHTML =
-	    "<p>Elapsed time: <strong>" + new Date(m.getElapsedTime() * 1000).toISOString().substr(11, 8) + "</strong></p>" +
-	    "<p>Estimated cost: <strong>€" + m.getMeetingCost().toFixed(2) + "</strong></p>";
+	    "<p>Elapsed time: <strong>" + data.time + "</strong></p>" +
+	    "<p>Estimated cost: <strong>€" + data.cost + "</strong></p>";
     }
 
     addParticipants(role) {
@@ -37,16 +53,14 @@ class Meeting {
     }
 
     getElapsedTime() {
-	let diff = new Date() - this.startTime;
-	diff /= 1000;
-	return Math.round(diff);
+	return Math.round((new Date() - this.startTime) / 1000);
     }
 
     getMeetingCostPerSecond() {
 	this.meetingCost = 0;
 	for (let i = 0; i < this.participants.length; i++) {
-	    this.meetingCost += this.participants[i].getSalaryPerSecond();
-	    this.meetingCost += this.meetingCost * (this.participants[i].getSocialCost() / 100.0);
+	    this.meetingCost += this.participants[i].getSalaryPerSecond() *
+		(1 + (this.participants[i].getSocialCost() / 100.0));
 	}
 	return this.meetingCost;
     }

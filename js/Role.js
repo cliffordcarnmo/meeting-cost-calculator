@@ -1,4 +1,4 @@
-class Role{
+class Role {
     constructor(name, averageWage, socialCost) {
 	this.name = name;
 	this.averageWage = averageWage;
