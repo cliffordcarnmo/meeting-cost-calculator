@@ -44,6 +44,10 @@
 					return Math.round(diff);
 				}
 
+				getElapsedCost(){
+					return this.getElapsedTime() * this.getMeetingCostPerSecond()
+				}
+
 				getMeetingCostPerSecond() {
 					var cost = 0;
 					for (var i = 0; i < this.participants.length; i++) {
@@ -80,14 +84,14 @@
 			var totalMeetingCost = 0;
 			let m = new Meeting();
 
-			function showMeetingCost(meetingCostPerSecond){
-				totalMeetingCost += meetingCostPerSecond;
-				document.getElementById("meetingCost").innerHTML = "€" + totalMeetingCost.toFixed(2);
+			function startTicker() {
+				m.startMeeting();
+				setInterval(showMeetingCost, 1000);
 			}
 
-			function startTicker() {
-				var costPerSec = m.getMeetingCostPerSecond()
-				setInterval(showMeetingCost, 1000, costPerSec);
+			function showMeetingCost(){
+				totalMeetingCost = m.getElapsedCost();
+				document.getElementById("meetingCost").innerHTML = "€" + totalMeetingCost.toFixed(2);
 			}
 
 			function itterateTable() {
