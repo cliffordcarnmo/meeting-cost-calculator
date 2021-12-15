@@ -1,8 +1,9 @@
-let r = new Meeting();
 
 window.onload = () => {
     const params = new URLSearchParams(window.location.search);
-    const r = JSON.parse(atob(params.get("p")));
+    r = JSON.parse(atob(params.get("p")));
     document.getElementById("participants").innerHTML = r.participants.length;
     document.getElementById("time").innerHTML = r.time;
+    document.getElementById("cost").innerHTML = "€ " + r.cost;
+    console.log(r);
 }
