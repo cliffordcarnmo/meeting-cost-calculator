@@ -19,22 +19,22 @@
 
       <div class="row">
 	<div class="col">
-	  <div id="meetingCost" class="text-danger display-3"></div>
+	  <div id="meetingCost" class="text-danger display-5"></div>
 	</div>
       </div>
 
-      <div class="row pb-3">
+      <div class="row">
 	<div class="col-3">
-	  <label for="roleName" class="form-label">Participant role</label>
+	  <label for="roleName" class="form-label"><strong>Participant role</strong></label>
 	</div>
 	<div class="col-3">
-	  <label for="socialCost" class="form-label">Average monthly wage in EUR</label>
+	  <label for="socialCost" class="form-label"><strong>Average monthly wage in EUR</strong></label>
 	</div>
 	<div class="col-3">
-	  <label for="socialCost" class="form-label">Social cost of employment (%)</label>
+	  <label for="socialCost" class="form-label"><strong>Social cost of employment (%)</strong></label>
 	</div>
 	<div class="col-2">
-	  <label for="socialCost" class="form-label">Count</label>
+	  <label for="socialCost" class="form-label"><strong>Count</strong></label>
 	</div>
       </div>
 
@@ -55,19 +55,19 @@
 	  <input class="form-control" type="text" id="roleCount" value="5"/>
 	</div>
 	<div class="col-2" style="align: middle">
-  	  <button class="btn-sm btn-success" id="addRoleButton">Add Role</button>
+  	  <button class="btn btn-success" id="addRoleButton">Add Role</button>
 	</div>
       </div>
 
-      <div class="row">
+      <div class="row pb-3">
 	<div class="col">
-	  <input class="btn btn-primary" type="submit" id="startMeeting" value="Start meeting"/>
-	  <input class="btn btn-danger" type="submit" value="Reset" onClick="location.reload()"/>
+	  <input class="btn btn-primary" type="button" id="startMeeting" value="Start meeting"/>
+	  <input class="btn btn-danger" type="button" value="Reset" onClick="location.reload()"/>
 	</div>
       </div>
       <div class="row" id="reportDiv" style="display:none">
 	<div class="col">
-	  <button class="btn btn-success"><a id="reportLink" href="report.html?p=">Report Page</a></button>
+	  <button class="btn btn-success"><a style="text-decoration: none;" class="text-light" id="reportLink" href="report.html?p=">Report Page</a></button>
 	</div>
       </div>
     </div>
