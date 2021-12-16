@@ -32,14 +32,15 @@ window.onload = () => {
     $("startMeeting").onclick = startTicker;
 
     $("addRoleButton").onclick = () => {
-	let participant = new Role($("roleName").value,
-				   parseInt($("roleWage").value),
-				   parseFloat($("socialCost").value));
-	let participants = parseInt($("roleCount").value);
-	if(participant.getName().trim() === "" ||
-	   participant.getMonthlyWage() <= 0 ||
-	   participant.getSocialCost() <= 0) {
-	    alert('You must specify all fields');
+	const participant = new Role($("roleName").value,
+				     parseInt($("roleWage").value),
+				     parseFloat($("socialCost").value));
+	const participants = parseInt($("roleCount").value);
+	if(!Validator.isPositiveInteger(participants) ||
+	   !Validator.isNotEmpty(participant.getName().trim()) ||
+	   !Validator.isPositiveInteger(participant.getMonthlyWage()) ||
+	   !Validator.isPositiveDouble(participant.getSocialCost())) {
+	    alert('You must specify all fields correctly');
 	    return;
 	}
 

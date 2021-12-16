@@ -1,28 +1,15 @@
-class Validator{
-	static validateNumeric(value){
-		if(isNaN(value)){
-			return false;
-		}else{
-			return true;
-		}
-	}
+class Validator {
 
-	static validateDouble(value){
-		var re = /(^-?\d\d*\.\d\d*$)|(^-?\.\d\d*$)/;  
+    static isPositiveInteger(v) {
+	return Validator.isPositiveDouble(v) && Math.floor(v) === v;
+    }
 
-		if(re.test(value)){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
+    static isPositiveDouble(value) {
+	const v = Number(value);
+	return value.length != 0 && !isNaN(v) && isFinite(v) && v > 0;
+    }
 
-	static validateNotEmpty(value){
-		if(value.length === 0){
-			return false;
-		}else{
-			return true;
-		}
-	}
+    static isNotEmpty(value) {
+	return !(value.length === 0);
+    }
 }
