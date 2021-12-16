@@ -33,7 +33,7 @@ class Meeting {
 
     _tickMeeting() {
 	document.getElementById("meetingCost").innerHTML = this.getMeetingCostHTML(this.getMeetingSummary());
-	this.getTrees();
+	this.updateTrees();
 
     }
 
@@ -50,14 +50,14 @@ class Meeting {
 	return m;
     }
 
-    getTrees() {
-	const tree = document.createElement('div');
-	tree.setAttribute('class', 'tree');
-	tree.style.float = 'left';
-	tree.innerHTML = '&#127794;';
-	var currentTreeCount = document.getElementById("trees").children.length;
-	var wantedTreeCount = Math.floor(this.getMeetingCost());
+    updateTrees() {
+	let currentTreeCount = document.getElementById("trees").children.length;
+	const wantedTreeCount = Math.floor(this.getMeetingCost());
 	while(currentTreeCount < wantedTreeCount) {
+	    const tree = document.createElement('div');
+	    tree.setAttribute('class', 'tree');
+	    tree.style.float = 'left';
+	    tree.innerHTML = '&#127794;';
 	    document.getElementById("trees").appendChild(tree);
 	    currentTreeCount++;
 	}
