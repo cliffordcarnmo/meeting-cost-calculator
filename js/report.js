@@ -6,7 +6,7 @@ window.onload = () => {
     costPerSec = meeting.cost / secondsInMeeting;
     document.getElementById("participants").innerHTML = meeting.participants.length;
     document.getElementById("time").innerHTML = meeting.time;
-    document.getElementById("cost").innerHTML = "€ " + meeting.cost;
-    document.getElementById("costPerSec").innerHTML = "€ " + (meeting.cost / secondsInMeeting).toFixed(2);
+    document.getElementById("cost").innerHTML = "€" + meeting.cost;
+    document.getElementById("costPerSec").innerHTML = "€" + (meeting.cost / secondsInMeeting).toFixed(2);
     document.getElementById("forest").innerHTML =(meeting.cost * 5 ).toFixed(1) + "m² forest";    
 }
