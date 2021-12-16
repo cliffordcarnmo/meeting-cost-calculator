@@ -33,6 +33,8 @@ class Meeting {
 
     _tickMeeting() {
 	document.getElementById("meetingCost").innerHTML = this.getMeetingCostHTML(this.getMeetingSummary());
+	this.getTrees();
+
     }
 
     toJSON() {
@@ -48,6 +50,14 @@ class Meeting {
 	return m;
     }
 
+	getTrees() {
+		var currentTreeCount = document.getElementById("trees").innerHTML.split("🌲").length - 1;
+		var wantedTreeCount = Math.floor(this.getMeetingCost());
+		while(currentTreeCount < wantedTreeCount) {
+			document.getElementById("trees").innerHTML += "🌲";
+			currentTreeCount ++;
+		}
+	}
     getMeetingSummary(full=false) {
 	return {startTime: this.startTime,
 		endTime: this.endTime,
