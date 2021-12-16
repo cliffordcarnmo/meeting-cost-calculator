@@ -3,7 +3,9 @@ let m = new Meeting();
 const $ = x => document.getElementById(x);
 
 const startTicker = () => {
-    if(m.isStarted()) {
+	$("treeTicker").style.display = "inline";
+
+	if(m.isStarted()) {
 	$("startMeeting").value="Start meeting";
 	m.endMeeting();
     } else {
@@ -30,7 +32,7 @@ const updateRoleList = () => {
 
 window.onload = () => {
     $("startMeeting").onclick = startTicker;
-
+	$("treeTicker").style.display = "none";
     $("addRoleButton").onclick = () => {
 	const participant = new Role($("roleName").value,
 				     parseInt($("roleWage").value),
