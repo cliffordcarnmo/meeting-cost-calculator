@@ -50,14 +50,20 @@ class Meeting {
 	return m;
     }
 
-	getTrees() {
-		var currentTreeCount = document.getElementById("trees").innerHTML.split("🌲").length - 1;
-		var wantedTreeCount = Math.floor(this.getMeetingCost());
-		while(currentTreeCount < wantedTreeCount) {
-			document.getElementById("trees").innerHTML += "🌲";
-			currentTreeCount ++;
-		}
+    getTrees() {
+	const tree = document.createElement('div');
+	tree.setAttribute('class', 'tree');
+	tree.style.float = 'left';
+	tree.innerHTML = '&#127794;';
+	var currentTreeCount = document.getElementById("trees").children.length;
+	var wantedTreeCount = Math.floor(this.getMeetingCost());
+	while(currentTreeCount < wantedTreeCount) {
+	    document.getElementById("trees").appendChild(tree);
+	    currentTreeCount++;
 	}
+	document.getElementById("numtrees").innerText = currentTreeCount;
+    }
+
     getMeetingSummary(full=false) {
 	return {startTime: this.startTime,
 		endTime: this.endTime,
