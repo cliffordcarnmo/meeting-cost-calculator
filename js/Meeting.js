@@ -67,7 +67,7 @@ class Meeting {
     getMeetingSummary(full=false) {
 	return {startTime: this.startTime,
 		endTime: this.endTime,
-		participants: full ? this.getParticipants() : null,
+		participants: full ? this.getParticipants().length : null,
 		time: new Date(this.getElapsedTime() * 1000).toISOString().substr(11, 8),
 		cost: this.getMeetingCost().toFixed(2)};
     }
