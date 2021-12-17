@@ -3,9 +3,12 @@ let m = new Meeting();
 const $ = x => document.getElementById(x);
 
 const startTicker = () => {
-	$("treeTicker").style.display = "inline";
+    if(m.getParticipants().length < 1) {
+	return false;
+    }
+    $("treeTicker").style.display = "inline";
 
-	if(m.isStarted()) {
+    if(m.isStarted()) {
 	$("startMeeting").value="Start meeting";
 	m.endMeeting();
     } else {
@@ -51,5 +54,6 @@ window.onload = () => {
 	}
 
 	updateRoleList();
+	$("startMeeting").disabled = false;
     };
 };
