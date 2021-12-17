@@ -4,7 +4,7 @@ window.onload = () => {
     meeting = JSON.parse(atob(params.get("p")));
     secondsInMeeting = Math.abs(new Date(meeting.startTime) - new Date(meeting.endTime)) /1000;
     costPerSec = meeting.cost / secondsInMeeting;
-    document.getElementById("participants").innerHTML = meeting.participants.length;
+    document.getElementById("participants").innerHTML = meeting.participants;
     document.getElementById("time").innerHTML = meeting.time;
     document.getElementById("cost").innerHTML = "€" + meeting.cost;
     document.getElementById("costPerSec").innerHTML = "€" + (meeting.cost / secondsInMeeting).toFixed(2);
