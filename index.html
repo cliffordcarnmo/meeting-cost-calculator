@@ -28,6 +28,19 @@
 			</div>
 			
 			<div class="row">
+				<div id="meetingCostTemplate" style="display:none">
+					<p>Elapsed time: <strong>{time}</strong>, Estimated cost: <strong>€{cost}</strong></p>
+				</div>
+			</div>
+
+			<div class="row pb-3">
+				<div class="col" id="treeTicker">
+					The cost of this meeting could have <a href="https://teamtrees.org/" target="_blank">planted this many trees:</a> <b id="numtrees"></b>
+					<div id="trees"></div>
+				</div>
+			</div>
+
+			<div class="row">
 				<div class="col">
 					<div class="alert alert-success small" role="alert">
 						<i class="bi-exclamation-triangle-fill pe-2" style="font-size:1.5em;"></i><strong>TIPS FOR BETTER MEETINGS</strong>
@@ -91,18 +104,6 @@
 				<div class="col">
 					<button class="btn btn-success"><a style="text-decoration: none;" class="text-light" id="reportLink" target="_blank" href="report.html?p=">Get your certificate!</a></button>
 				</div>
-			</div>
-
-			<div class="row">
-				<div class="col" id="treeTicker">
-					<hr>
-					The cost of this meeting could have <a href="https://teamtrees.org/" target="_blank">planted this many trees:</a> <b id="numtrees"></b>
-					<div id="trees"></div>
-				</div>
-			</div>
-
-			<div id="meetingCostTemplate" style="display:none">
-				<p>Elapsed time: <strong>{time}</strong>, Estimated cost: <strong>€{cost}</strong></p>
 			</div>
 
 			<div id="roleTemplate" style="display:none">
